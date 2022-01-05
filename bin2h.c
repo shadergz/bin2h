@@ -213,39 +213,38 @@ int main (int argc, char **argv)
             count = strtoul (optarg, NULL, 0);
             break;
         }
-    
-    if (!input_filename && optind)
-        if (argc > optind)
+
+    if ((!input_filename) && optind)
+        if ((argc - 1) >= optind)
             if (argv[optind])
                 input_filename = strdup (argv[optind]);
-    
     if (col_size % 2)
         fatal ("Error: Incorrect column size, must be a power of 2. e.g: 2, 4, 6, 8...\n");
 
-#if defined (__unix__)
     if (!input_filename) {
+#if defined (__unix__)
         if (!output_filename)
             output_filename = strdup ("out.h");
         if (!symbol_name)
             symbol_name = strdup ("stdin");
         input_filename = strdup (stdin_path);
         input_file = stdin;
-    }
 #else
-    else
         fatal ("Error: Ain't any input filename\n");
 #endif
+    }
+
     if (!output_filename)
         /*  Attempting to generate a output filename from 
          *  the input filename 
         */
         output_filename = gen (input_filename, ".,_", ".h");
     if (!symbol_name)
-        symbol_name = gen (input_filename, ".,_","");
+        symbol_name = gen (input_filename, ".,_", "");
     
     if (!input_file)
         if (!(input_file = fopen (input_filename, "r")))
-            fatal ("Error: Couldn't open the input file: %s\n", input_file);
+            fatal ("Error: Couldn't open the input file: %s\n", input_filename);
         
     if (!(output_file = fopen (output_filename, "w+")))
         fatal ("Error: Couldn't create/overwrite the output file: %s\n", output_filename);
