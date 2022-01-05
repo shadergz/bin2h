@@ -17,3 +17,5 @@ endif ()
 
 add_executable (${PROJECT_NAME} ${bin2h_SRC})
 
+install (TARGETS ${PROJECT_NAME} DESTINATION ${BIN})
+

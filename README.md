@@ -46,3 +46,11 @@ cd build
 cmake ..
 make
 ```
+
+## How to install
+
+- Just type at build directory as root:
+
+```bash
+make install
+```
