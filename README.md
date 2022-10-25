@@ -1,13 +1,13 @@
 # bin2h
 
-- A simple "binary to C-header" program that can works has platform-independent (Just needs a C compiler to do the work)
+- A simple "binary to C-header" program that can works as platform-independent (Just needs a C compiler to do the work)
 
 ## Usage example
 
 - A simple usage example that dump eleven bytes from the self bin2h executable file in the default output filename (resolved at runtime).
 
 ```bash
-./bin2h bin2h --symbol-name=binary_file_dump --count=11 --skip=10 --collum-size=12
+./bin2h bin2h --symbol-name=binary_file_dump --count=11 --skip=10 --column-size=12
 ```
 
 - The result from the above command (bin2h.h):
@@ -43,8 +43,8 @@ unsigned char binary_file_dump[11] = {
 ```bash
 mkdir build
 cd build
-cmake ..
-make
+build> cmake ..
+build> make
 ```
 
 ## How to install
@@ -52,5 +52,5 @@ make
 - Just type at build directory as root:
 
 ```bash
-make install
+build> make install
 ```
